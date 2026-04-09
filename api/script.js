@@ -1,10 +1,12 @@
-export default function handler(req, res) {
+module.exports = function handler(req, res) {
+
   const userAgent = req.headers['user-agent'] || '';
   const isRoblox = userAgent.includes('Roblox');
 
   if (isRoblox) {
     res.setHeader('Content-Type', 'text/plain');
     res.status(200).send('print("123")');
+
   } else {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.status(403).send(`
